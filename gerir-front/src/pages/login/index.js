@@ -25,8 +25,16 @@ const Login = () => {
                 'content-type' : 'application/json'
             }
         })
-        .then(responde =>{
-            console.log(responde);
+        .then(response =>{
+            console.log(response);
+            if(response.ok){
+                return response.json();
+            }
+            alert("Os dados inseridos são invalidos, veriifique os dados")
+        })
+        .then(data => {
+            console.log(data);
+            localStorage.setItem('token-gerir' , data.token);
         })
     }
 
